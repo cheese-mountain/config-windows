@@ -37,7 +37,10 @@ Make sure all applications run as admin to not run into any issues
 3. Disable win + l (used as arrow key left alias)
 Navigate to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System in regedit
 Add 32bit DWORD DisableLockWorkstation with value of 1
-3. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
+3. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in. Actions:
+ - C:\Users\kasper\AppData\Local\Microsoft\WindowsApps\wt.exe -w _quake
+ - "C:\Program Files\komorebi\bin\komorebic-no-console.exe" start --clean-state
+ - "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe" A:\repos\config\ahk\remaps.ahk"
 
 ### VSCode
 
