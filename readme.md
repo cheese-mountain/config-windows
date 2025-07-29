@@ -32,7 +32,7 @@ Make sure all applications run as admin to not run into any issues
 
 ### Keybindings
 
-1. Install sharpkeys & autohotkey (version 1.1)
+1. Install sharpkeys & autohotkey v2
 2. Run sharpkeys & remap caps to esc
 3. Disable win + l (used as arrow key left alias)
 Navigate to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System in regedit
