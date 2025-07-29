@@ -32,7 +32,7 @@ Make sure all applications run as admin to not run into any issues
 
 ### Keybindings
 
-1. Install sharpkeys & autohotkey (version 1.1)
+1. Install sharpkeys & autohotkey v2
 2. Run sharpkeys & remap caps to esc
 3. Open task scheduler with Win + R, 'taskschd.msc' > Create Task. Trigger should be when logged in & action is to execute ./hotkeys/build.exe
 
