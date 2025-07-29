@@ -1,22 +1,24 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-$global:downloads = "G:\data\downloads"
-
+# Aliases
 Set-Alias -Name vim -Value nvim
 
-if ($host.Name -eq 'ConsoleHost') {
-    Import-Module PSReadLine
-}
+Set-Alias -Name code -Value cursor
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Remove-Item Alias:cd -Force -ErrorAction SilentlyContinue
+Set-Alias -Name cd -Value z
+
+# if ($host.Name -eq 'ConsoleHost') {
+#     Import-Module PSReadLine
+# }
 
 $omp_config = Join-Path $PSScriptRoot ".\oh-my-posh.json"
 oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
 Import-Module -Name PSEverything
-
-# PSReadLine
-# Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Use window style commands (ctrl + c/v/a/x)
 Set-PSReadLineOption -EditMode Windows
@@ -163,81 +165,4 @@ function bin($empty) {
     } else {
         explorer.exe shell:RecycleBinFolder
     }
-}
-
-function timer {
-    param(
-        [Parameter(Position = 0)]
-        [int]$Minutes,
-        
-        [Parameter(ParameterSetName = "CheckRemaining")]
-        [switch]$Left
-    )
-    
-    # Define a global variable to store timer information
-    if (-not (Test-Path variable:global:timerInfo)) {
-        $global:timerInfo = @{
-            Running = $false
-            StartTime = $null
-            Duration = 0
-            JobId = $null
-        }
-    }
-    
-    # Check if user wants to know time left
-    if ($Left) {
-        if (-not $global:timerInfo.Running) {
-            Write-Host "No timer currently running."
-            return
-        }
-        
-        $elapsed = (Get-Date) - $global:timerInfo.StartTime
-        $remaining = [math]::Max(0, $global:timerInfo.Duration - $elapsed.TotalSeconds)
-        $minutesLeft = [math]::Floor($remaining / 60)
-        $secondsLeft = [math]::Floor($remaining % 60)
-        
-        Write-Host "Time remaining: $minutesLeft minutes and $secondsLeft seconds"
-        return
-    }
-    
-    # Start a new timer
-    if ($Minutes -le 0) {
-        Write-Host "Please provide a valid duration in minutes."
-        return
-    }
-    
-    # Stop any existing timer
-    if ($global:timerInfo.Running -and $global:timerInfo.JobId) {
-        Stop-Job -Id $global:timerInfo.JobId -ErrorAction SilentlyContinue
-        Remove-Job -Id $global:timerInfo.JobId -ErrorAction SilentlyContinue
-        $global:timerInfo.Running = $false
-    }
-    
-    # Set up new timer
-    $durationSeconds = $Minutes * 60
-    $global:timerInfo.StartTime = Get-Date
-    $global:timerInfo.Duration = $durationSeconds
-    $global:timerInfo.Running = $true
-    
-    Write-Host "Timer started for $Minutes minutes."
-    
-    # Create a background job for the timer
-    $job = Start-Job -ScriptBlock {
-        param($seconds)
-        Start-Sleep -Seconds $seconds
-        return "Timer completed"
-    } -ArgumentList $durationSeconds
-    
-    $global:timerInfo.JobId = $job.Id
-    
-    # Register an event to handle timer completion
-    Register-ObjectEvent -InputObject $job -EventName StateChanged -Action {
-        if ($Event.SourceEventArgs.JobStateInfo.State -eq "Completed") {
-            [console]::beep(2000, 500)
-            Write-Host "`nTimer finished!"
-            $global:timerInfo.Running = $false
-            Unregister-Event -SourceIdentifier $eventSubscriber.SourceIdentifier
-            Remove-Job -Id $global:timerInfo.JobId -Force
-        }
-    } | Out-Null
 }

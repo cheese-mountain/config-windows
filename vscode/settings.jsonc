@@ -271,5 +271,7 @@
     },
 
     "npm.packageManager": "pnpm",
-    "git.openRepositoryInParentFolders": "always"
+    "git.openRepositoryInParentFolders": "always",
+    "powershell.promptToUpdatePowerShell": false,
+    "github.copilot.nextEditSuggestions.enabled": true
 }
