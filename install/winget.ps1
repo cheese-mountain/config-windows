@@ -28,13 +28,3 @@ foreach ($package in $packages) {
     Write-Host "`n=== Processing $package ===" -ForegroundColor Cyan
     winget install --id $package --exact --source winget --accept-package-agreements --accept-source-agreements
 }
-
-# Install Composer packages
-if (Get-Command composer -ErrorAction SilentlyContinue) {
-    Write-Host "Installing Composer global packages..." -ForegroundColor Yellow
-    composer global require --quiet php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
-}
-
-Write-Host "Package installation complete!" -ForegroundColor Cyan
-
-Install-Module Terminal-Icons
