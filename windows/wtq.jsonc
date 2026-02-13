@@ -4,26 +4,26 @@
             "Name": "Terminal",
             "Hotkeys": [
                 {
-                    "Key": "F13"
-                }
+                    "Key": "F11",
+                },
             ],
             "Filename": "wt",
-            "ProcessName": "WindowsTerminal"
+            "ProcessName": "WindowsTerminal",
         },
         {
             "Name": "Claude",
             "Hotkeys": [
                 {
-                    "Key": "F15"
-                }
+                    "Key": "F15",
+                },
             ],
             "FileName": "claude",
-            "ProcessName": "Claude"
-        }
+            "ProcessName": "Claude",
+        },
     ],
     "HorizontalScreenCoverage": 99.9999,
     // "HorizontalScreenCoverage": "60",
     "HorizontalAlign": "Left",
     "VerticalScreenCoverage": 100,
-    "AnimationDurationMs": 0
+    "AnimationDurationMs": 0,
 }

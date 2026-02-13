@@ -22,7 +22,7 @@ Make sure all applications run as admin to not run into any issues
 
 ### Terminal Setup
 
-1. Install neovim, wezterm, wtq, fzf, latest powershell, windows terminal, Search Everything & oh my posh
+1. Install neovim, wtq, fzf, latest powershell, windows terminal, Search Everything & oh my posh
 2. Copy paste windows terminal settings from windows/terminal.json
 3. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
 4. Run nvim $profile & insert ```. T:\path\to\this\repo\profile.ps1```

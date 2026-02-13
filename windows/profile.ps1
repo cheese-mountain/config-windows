@@ -21,7 +21,7 @@ Import-Module -Name Terminal-Icons
 Import-Module -Name PSEverything
 
 # Use window style commands (ctrl + c/v/a/x)
-Set-PSReadLineOption -EditMode Windows
+# Set-PSReadLineOption -EditMode Windows
 
 # Search r (repo), d (directory), f (file) or t (text)
 function search($target, $all = $false) {
