@@ -1,0 +1,66 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  a s d f g h j k l ;
+)
+
+(defchords bas-chords 100
+  (kba) a
+  (kbs) s
+  (kbd) d
+  (kbf) f
+  (kbg) g
+  (kbh) h
+  (kbj) j
+  (kbk) k
+  (kbl) l
+  (kb;) ;
+
+  ;; Left
+  (kba kbs) lalt
+  (kbs kbd) rctl
+  (kbd kbf) lsft
+  (kbf kbg) (multi ralt (layer-while-held homerow_altgr))
+
+  ;; Right
+  (kbh kbj) (multi ralt (layer-while-held homerow_altgr)) 
+  (kbj kbk) lsft
+  (kbk kbl) rctl
+  (kbl kb;) lalt
+)
+
+(defalias
+  a (chord bas-chords kba)
+  s (chord bas-chords kbs)
+  d (chord bas-chords kbd)
+  f (chord bas-chords kbf)
+  g (chord bas-chords kbg)
+  h (chord bas-chords kbh)
+  j (chord bas-chords kbj)
+  k (chord bas-chords kbk)
+  l (chord bas-chords kbl)
+  ; (chord bas-chords kb;)
+  ;; ; (unmod lsft ,)
+  : (unmod lsft .)
+  _ (unmod Slash)
+  ' (unmod Backslash)
+  - (unmod Slash)
+  ^ (unmod lsft BracketRight)
+  , (unmod ,)
+  . (unmod .)
+)
+
+(deflayer base
+  @a @s @d @f @g @h @j @k @l @;
+)
+
+(deflayer homerow_altgr
+  @^ @, @. @- _ _ @' @^ _ _
+)
+
+;; (deflayer j;
+;;  @^ @, @. @- _ _ _ _ _ _
+;; )
+

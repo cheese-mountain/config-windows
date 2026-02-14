@@ -1,0 +1,42 @@
+(defcfg concurrent-tap-hold yes)
+(defsrc)
+(deflayer base)
+(defvar tap-time 200 hold-time 200)
+
+(defchordsv2
+  (d f)
+    (t! df-chord d f)
+    50 first-release ()
+)
+
+(deftemplate df-chord (input1 input2)
+  (tap-hold $tap-time $hold-time 
+    (switch
+      ;; df was typed (d first, then f)
+      ((input-history real $input1 1)) (one-shot-press 2000 (layer-while-held df-layer)) break
+      ;; fd was typed (f first, then d)
+      ((input-history real $input2 1)) (one-shot-press 2000 (layer-while-held fd-layer)) break
+    )
+    lctl  ;; hold action (or whatever you want)
+  )
+)
+
+(deflayer df-layer
+  _ (tap-hold 10 10 1 A-1) (tap-hold 10 10 2 A-2) (tap-hold 10 10 3 A-3) 
+    (tap-hold 10 10 4 A-4) (tap-hold 10 10 5 A-5) (tap-hold 10 10 6 A-6) 
+    (tap-hold 10 10 7 A-7) (tap-hold 10 10 8 A-8) (tap-hold 10 10 9 A-9) 
+    (tap-hold 10 10 0 A-0) _ _
+  _ _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _
+)
+
+(deflayer fd-layer
+  _ (tap-hold 10 10 1 C-1) (tap-hold 10 10 2 C-2) (tap-hold 10 10 3 C-3) 
+    (tap-hold 10 10 4 C-4) (tap-hold 10 10 5 C-5) (tap-hold 10 10 6 C-6) 
+    (tap-hold 10 10 7 C-7) (tap-hold 10 10 8 C-8) (tap-hold 10 10 9 C-9) 
+    (tap-hold 10 10 0 C-0) _ _
+  _ _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _ _ _ _ _ _ _ _ _ _
+  _ _ _
+)

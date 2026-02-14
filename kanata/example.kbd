@@ -1,0 +1,21 @@
+(defcfg concurrent-tap-hold yes)
+(defsrc)(deflayer base)
+(defvar tap-time 200 hold-time 200)
+(defchordsv2
+  (w e)
+	(t! chord-mod w e lctl)
+	50 first-release ()
+
+  (i o)
+	(t! chord-mod i o lctl)
+	50 first-release ())
+
+(deftemplate chord-mod (input1 input2 mod)
+(tap-hold $tap-time $hold-time (switch
+	((input-history real $input1 1)) (multi $input2 $input1) break
+	((input-history real $input2 1)) (multi $input1 $input2) break
+	((input-history real $input1 2)) (multi $input2 $input1) break
+	((input-history real $input2 2)) (multi $input1 $input2) break
+	((input-history real $input1 3)) (multi $input2 $input1) break
+	((input-history real $input2 3)) (multi $input1 $input2) break
+) $mod))

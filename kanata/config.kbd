@@ -1,0 +1,53 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  a s d f g h j k l ;
+)
+
+(defchords bas-chords 100
+  (kbs) s
+  (kbd) d
+  (kbf) f
+  (kbj) j
+  (kbk) k
+  (kbl) l
+
+  ;; Left
+  (kbs kbd) (tap-hold 200 200 (one-shot 2000 lalt) rctl)
+  (kbd kbf) (tap-hold 200 200 (one-shot 2000 ralt) lsft)
+
+  ;; Right
+  (kbj kbk) (tap-hold 200 200 (one-shot 2000 ralt) lsft)
+  (kbk kbl) (tap-hold 200 200 (one-shot 2000 lalt) rctl)
+)
+
+(defalias
+  s (chord bas-chords kbs)
+  d (chord bas-chords kbd)
+  f (chord bas-chords kbf)
+  j (chord bas-chords kbj)
+  k (chord bas-chords kbk)
+  l (chord bas-chords kbl)
+  : (unmod lsft .)
+  _ (unmod Slash)
+  ' (unmod Backslash)
+  - (unmod Slash)
+  ^ (unmod lsft BracketRight)
+  , (unmod ,)
+  . (unmod .)
+  )
+
+(deflayer base
+  _ @s @d @f _ _ @j @k @l _
+)
+
+(deflayer homerow_altgr
+  @^ @, @. @- _ _ @' @^ _ _
+)
+
+;; (deflayer j;
+;;  @^ @, @. @- _ _ _ _ _ _
+;; )
+
