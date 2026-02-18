@@ -43,10 +43,56 @@ function wp-site {
 function ln {
     param(
         [Parameter(Mandatory=$true)]
-        [string]$path,
+        [string]$target,
 
         [Parameter(Mandatory=$true)]
-        [string]$target
+        [string]$path
     )
     New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
+
+function Convert-ToWslPath {
+    param (
+        [Parameter(Mandatory)]
+        [string]$WindowsPath
+    )
+
+    # Normalize to full path
+    $fullPath = [System.IO.Path]::GetFullPath($WindowsPath)
+
+    # Extract drive letter
+    $drive = $fullPath.Substring(0,1).ToLower()
+
+    # Remove "C:"
+    $pathWithoutDrive = $fullPath.Substring(2)
+
+    # Replace backslashes with forward slashes
+    $unixPath = $pathWithoutDrive -replace '\\','/'
+
+    return "/mnt/$drive$unixPath"
+}
+
+function fd {
+    $basePath = "C:\Users\kaspe\dev"
+    $selectedDir = Get-ChildItem -Path $basePath -Directory |
+        ForEach-Object { $_.FullName } |
+        fzf `
+            --preview 'lsd --color=always --icon=always {}' `
+            --preview-window=right:50% `
+            --height=80% `
+            --border |
+        Out-String
+
+    if ($selectedDir) {
+        $sessionName = Split-Path $selectedDir -Leaf
+        $wslPath = Convert-ToWslPath $selectedDir
+        Start-Process wsl -ArgumentList "--exec tmuxify $wslPath" -NoNewWindow -Wait
+    }
+}
+
+function fd2 {
+    Start-Process wsl -ArgumentList "--exec fd" -NoNewWindow -Wait
+}
+
+# Bind Ctrl+F to run fd
+Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock { fd }
