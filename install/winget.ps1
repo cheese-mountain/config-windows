@@ -2,6 +2,8 @@ $packages = @(
     "Kitware.CMake",
     "StartIsBack.StartAllBack",
     "RandyRants.SharpKeys",
+    "OpenWhisperSystems.Signal",
+    "Valve.Steam",
     "Insomnia.Insomnia",
     "LLVM.LLVM",
     "Ninja-build.Ninja",

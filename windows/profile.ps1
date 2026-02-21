@@ -51,27 +51,6 @@ function ln {
     New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
 
-function Convert-ToWslPath {
-    param (
-        [Parameter(Mandatory)]
-        [string]$WindowsPath
-    )
-
-    # Normalize to full path
-    $fullPath = [System.IO.Path]::GetFullPath($WindowsPath)
-
-    # Extract drive letter
-    $drive = $fullPath.Substring(0,1).ToLower()
-
-    # Remove "C:"
-    $pathWithoutDrive = $fullPath.Substring(2)
-
-    # Replace backslashes with forward slashes
-    $unixPath = $pathWithoutDrive -replace '\\','/'
-
-    return "/mnt/$drive$unixPath"
-}
-
 function fd {
     $basePath = "C:\Users\kaspe\dev"
     $selectedDir = Get-ChildItem -Path $basePath -Directory |
@@ -84,9 +63,21 @@ function fd {
         Out-String
 
     if ($selectedDir) {
-        $sessionName = Split-Path $selectedDir -Leaf
-        $wslPath = Convert-ToWslPath $selectedDir
-        Start-Process wsl -ArgumentList "--exec tmuxify $wslPath" -NoNewWindow -Wait
+        Set-Location $selectedDir
+    #     $sessionName = Split-Path $selectedDir -Leaf
+    #
+    #     # Check if tmux session exists
+    #     tmux has-session -t $sessionName 2>$null
+    #
+    #     if ($LASTEXITCODE -eq 0) {
+    #         Write-Host "Session exists, attaching..."
+    #         tmux attach-session -t $sessionName
+    #     } else {
+    #         Write-Host "Session does not exist"
+    #         Set-Location $selectedDir
+    #         tmux new-session -s $sessionName -c $selectedDir
+    #         # tmux attach-session -t $sessionName
+    #     }
     }
 }
 
