@@ -1,5 +1,7 @@
 $packages = @(
     "Kitware.CMake",
+    "Microsoft.VisualStudio.2022.BuildTools",
+    "LLVM.clangd",
     "StartIsBack.StartAllBack",
     "RandyRants.SharpKeys",
     "OpenWhisperSystems.Signal",
