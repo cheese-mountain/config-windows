@@ -3,8 +3,8 @@ pcall(function()
   dofile(vim.g.base46_cache .. "treesitter")
 end)
 
-require("nvim-treesitter.configs").setup({
-ensure_installed = {
+require("nvim-treesitter.configs").setup {
+  ensure_installed = {
     "lua",
     "luadoc",
     "printf",
@@ -20,8 +20,9 @@ ensure_installed = {
     "tsx",
     "json",
     "sql",
+    "cpp",
     "java",
-    "kotlin"
+    "kotlin",
   },
 
   highlight = {
@@ -46,9 +47,9 @@ ensure_installed = {
       },
     },
     selection_modes = {
-      ['@parameter.outer'] = 'v', -- charwise
-      ['@function.outer'] = 'V', -- linewise
-      ['@class.outer'] = '<c-v>', -- blockwise
+      ["@parameter.outer"] = "v", -- charwise
+      ["@function.outer"] = "V", -- linewise
+      ["@class.outer"] = "<c-v>", -- blockwise
     },
     swap = {
       enable = true,
@@ -60,4 +61,4 @@ ensure_installed = {
       },
     },
   },
-})
+}

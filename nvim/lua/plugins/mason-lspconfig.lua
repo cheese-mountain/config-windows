@@ -12,6 +12,7 @@ return {
           "dart_format",
           "google-java-format",
           "kotlin-language-server",
+          "clangd",
           "ktlint",
         },
       },
