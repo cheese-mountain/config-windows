@@ -3,19 +3,7 @@ return {
   dependencies = {
     {
       "mason-org/mason.nvim",
-      opts = {
-        ensure_installed = {
-          "stylua",
-          "prettierd",
-          "prettier",
-          "php_cs_fixer",
-          "dart_format",
-          "google-java-format",
-          "kotlin-language-server",
-          "clangd",
-          "ktlint",
-        },
-      },
+      opts = {},
     },
     "neovim/nvim-lspconfig",
   },

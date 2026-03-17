@@ -1,6 +1,20 @@
 ; AutoHotkey v2 script
 SetWorkingDir(A_ScriptDir)
 
+; --- Swedish Characters via Alt ---
+
+; Alt + [  ->  å
+![::Send("å")
+!+[::Send("Å")
+
+; Alt + '  ->  ä
+!'::Send("ä")
+!+'::Send("Ä")
+
+; Alt + ;  ->  ö
+!`;::Send("ö")
+!+`;::Send("Ö")
+
 ; Bind Alt + w to close current window
 !w::{
     if WinExist("A") {

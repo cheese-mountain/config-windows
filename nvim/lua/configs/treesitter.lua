@@ -3,7 +3,7 @@ pcall(function()
   dofile(vim.g.base46_cache .. "treesitter")
 end)
 
-require("nvim-treesitter.configs").setup {
+return {
   ensure_installed = {
     "lua",
     "luadoc",
@@ -24,6 +24,8 @@ require("nvim-treesitter.configs").setup {
     "java",
     "kotlin",
   },
+
+  auto_install = true,
 
   highlight = {
     enable = true,

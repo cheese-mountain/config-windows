@@ -2,6 +2,7 @@ $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
     "LLVM.clangd",
+    "Oven-sh.Bun",
     "StartIsBack.StartAllBack",
     "RandyRants.SharpKeys",
     "OpenWhisperSystems.Signal",
