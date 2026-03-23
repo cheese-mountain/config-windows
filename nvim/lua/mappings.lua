@@ -82,6 +82,10 @@ for i = 1, 5 do
   end, { desc = "Harpoon file " .. i })
 end
 
+-- Navigate to previous and next buffer
+map('n', '<C-n>', ':bnext<CR>')
+map('n', '<C-p>', ':bprevious<CR>')
+
 -- Toggle quickfix list
 map('n', '<leader>o', function()
   local qf_winid = nil

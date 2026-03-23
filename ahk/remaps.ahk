@@ -1,3 +1,4 @@
+#Requires AutoHotkey v2.0
 ; AutoHotkey v2 script
 SetWorkingDir(A_ScriptDir)
 
@@ -24,7 +25,7 @@ SetWorkingDir(A_ScriptDir)
 
 ; Send custom keys with ctrl/win + space
 ^Space::Send "{F14}"
-#Space::Send "{F13}"
+; #Space::Send "{F13}"
 
 ; Path to the DLL, relative to the script
 VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
