@@ -24,7 +24,7 @@ SetWorkingDir(A_ScriptDir)
 }
 
 ; Send custom keys with ctrl/win + space
-^Space::Send "{F14}"
+^Space::Send "{Esc}"
 ; #Space::Send "{F13}"
 
 ; Path to the DLL, relative to the script

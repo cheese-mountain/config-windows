@@ -2,6 +2,12 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+-- Escape in insert mode
+-- map('i', 'jk', '<Esc>');
+-- map('i', 'kj', '<Esc>');
+-- map('i', 'jj', '<Esc>');
+-- map('i', 'kk', '<Esc>');
+
 map("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and quit all" })
 
 -- Terminal

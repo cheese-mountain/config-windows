@@ -1,6 +1,7 @@
 $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
+    "jqlang.jq",
     "LLVM.clangd",
     "Oven-sh.Bun",
     "StartIsBack.StartAllBack",
