@@ -22,9 +22,15 @@ SetWorkingDir(A_ScriptDir)
         WinClose "A" 
     }
 }
-
+; Map Left Shift to Escape when tapped
+~LShift:: {
+    KeyWait "LShift"
+    if (A_PriorKey = "LShift") {
+        Send "{Esc}"
+    }
+}
 ; Send custom keys with ctrl/win + space
-^Space::Send "{Esc}"
+; ^Space::Send "{Esc}"
 ; #Space::Send "{F13}"
 
 ; Path to the DLL, relative to the script
