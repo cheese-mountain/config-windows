@@ -66,6 +66,10 @@ map('n', '<leader>s', function()
   require('treesj').split()
 end, { desc = 'Split block' })
 
+-- new lines
+map('n', '<Enter>', 'o<Esc>')
+map('n', '<S-Enter>', 'O<Esc>')
+
 -- Center on scroll
 map('n', '<C-u>', '<C-u> zz')
 map('n', '<C-d>', '<C-d> zz')
@@ -82,7 +86,7 @@ map("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add file to
 map("n", "<leader>q", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggle harpoon quick menu" })
 
 -- Jump to harpoon files 1-5
-for i = 1, 5 do
+for i = 1, 9 do
   map("n", "<leader>" .. i, function()
     harpoon:list():select(i)
   end, { desc = "Harpoon file " .. i })

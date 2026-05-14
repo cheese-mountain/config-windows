@@ -22,16 +22,14 @@ SetWorkingDir(A_ScriptDir)
         WinClose "A" 
     }
 }
-; Map Left Shift to Escape when tapped
-~LShift:: {
-    KeyWait "LShift"
-    if (A_PriorKey = "LShift") {
+
+~LCtrl:: {
+    if (A_PriorKey = "LCtrl" && A_TimeSincePriorHotkey < 300) {
         Send "{Esc}"
     }
 }
-; Send custom keys with ctrl/win + space
-; ^Space::Send "{Esc}"
-; #Space::Send "{F13}"
+
+^;::Send "{Esc}"
 
 ; Path to the DLL, relative to the script
 VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
