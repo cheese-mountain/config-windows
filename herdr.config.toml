@@ -1,0 +1,15 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+switch_workspace = "prefix+1..9"
+focus_agent = "prefix+alt+1..9"
+
+[ui]
+hide_tab_bar_when_single_tab = true
+prompt_new_tab_name = false
+pane_borders = false
+pane_gaps = false
+
+[ui.toast]
+delivery = "terminal"

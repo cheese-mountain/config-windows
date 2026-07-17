@@ -36,8 +36,3 @@ Add 32bit DWORD DisableLockWorkstation with value of 1
  - "C:\Program Files\komorebi\bin\komorebic-no-console.exe" start --clean-state
  - "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe" A:\repos\config\ahk\remaps.ahk"
 
-### VSCode
-
-Either:
-a) Login and it will auto sync for you or
-b) copy settings under vscode/*.json
