@@ -50,11 +50,6 @@ end, { desc = 'Format buffer' })
 -- Oil
 map("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open oil" })
 
--- Configure diagnostic virtual text to have a max width
-vim.diagnostic.config({
-  float = { width = 80, wrap = true }
-})
-
 -- TreeSJ
 map('n', '<leader>m', function()
   require('treesj').toggle()
@@ -65,10 +60,6 @@ end, { desc = 'Join block' })
 map('n', '<leader>s', function()
   require('treesj').split()
 end, { desc = 'Split block' })
-
--- new lines
-map('n', '<Enter>', 'o<Esc>')
-map('n', '<S-Enter>', 'O<Esc>')
 
 -- Center on scroll
 map('n', '<C-u>', '<C-u> zz')
@@ -91,10 +82,6 @@ for i = 1, 9 do
     harpoon:list():select(i)
   end, { desc = "Harpoon file " .. i })
 end
-
--- Navigate to previous and next buffer
-map('n', '<C-n>', ':bnext<CR>')
-map('n', '<C-p>', ':bprevious<CR>')
 
 -- Toggle quickfix list
 map('n', '<leader>o', function()

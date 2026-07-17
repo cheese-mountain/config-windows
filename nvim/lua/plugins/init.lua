@@ -15,6 +15,7 @@ return {
   { import = "plugins.sleuth" },
   { import = "plugins.treesj" },
   { import = "plugins.oil" },
+  { import = "plugins.ts-error-translator" },
   { "folke/which-key.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 }

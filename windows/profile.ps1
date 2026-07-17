@@ -1,6 +1,9 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+# Force Unix/Emacs keybindings for terminal navigation
+Set-PSReadLineOption -EditMode Emacs
+
 Set-Alias -Name vim -Value nvim
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
