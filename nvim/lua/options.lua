@@ -6,7 +6,6 @@ local o = vim.o
 o.relativenumber = true
 o.wrap = false
 
-o.fileformats = { "unix", "dos" }
 o.clipboard = 'unnamedplus'
 
 -- o.laststatus = 0
