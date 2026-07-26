@@ -46,6 +46,53 @@ end, { desc = 'Show references' })
 map('n', '<leader>F', function()
   require('conform').format({ async = true, lsp_fallback = true })
 end, { desc = 'Format buffer' })
+map('n', '<leader>ca', function()
+  vim.lsp.buf.code_action()
+end, { desc = 'Code actions (imports, fixes, etc)' })
+
+-- Import organization and fixing
+map('n', '<leader>io', function()
+  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  for _, client in ipairs(clients) do
+    if client.supports_method("textDocument/codeAction") then
+      vim.lsp.buf.code_action({
+        context = { only = { "source.organizeImports" } },
+      })
+      return
+    end
+  end
+  vim.notify("No LSP client supports organize imports", vim.log.levels.WARN)
+end, { desc = 'Organize imports' })
+
+map('n', '<leader>ai', function()
+  -- Get current line diagnostics
+  local line = vim.fn.line('.') - 1
+  local col = vim.fn.col('.') - 1
+  local diagnostics = vim.diagnostic.get(0, { lnum = line })
+  
+  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  for _, client in ipairs(clients) do
+    if client.supports_method("textDocument/codeAction") then
+      vim.lsp.buf.code_action({
+        diagnostics = diagnostics,
+        filter = function(action)
+          return action.kind and action.kind == "quickfix"
+        end,
+      })
+      return
+    end
+  end
+  vim.notify("No LSP client supports code actions", vim.log.levels.WARN)
+end, { desc = 'Add missing imports' })
+
+-- Gitsigns (Git integration)
+local gitsigns = require('gitsigns')
+
+-- Preview hunk inline (VSCode-style)
+map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Preview hunk (inline)' })
+
+-- Toggle inline blame
+map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Toggle inline blame' })
 
 -- Oil
 map("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open oil" })
@@ -77,7 +124,7 @@ map("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add file to
 map("n", "<leader>q", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggle harpoon quick menu" })
 
 -- Jump to harpoon files 1-5
-for i = 1, 9 do
+for i = 1, 8 do
   map("n", "<leader>" .. i, function()
     harpoon:list():select(i)
   end, { desc = "Harpoon file " .. i })
@@ -99,3 +146,81 @@ map('n', '<leader>o', function()
     vim.cmd('copen')
   end
 end, { desc = 'Toggle quickfix list' })
+
+-- 99 AI Agent keymaps
+local _99 = require("99")
+
+-- Visual selection replacement with AI
+map("v", "<leader>[", function()
+  _99.visual()
+end, { desc = "99: AI visual replacement" })
+
+-- AI search across project
+map("n", "<leader>9s", function()
+  _99.search()
+end, { desc = "99: AI search" })
+
+-- AI vibe check (semantic search)
+map("n", "<leader>9i", function()
+  _99.vibe()
+end, { desc = "99: AI vibe search" })
+
+-- Stop all AI requests
+map("n", "<leader>9x", function()
+  _99.stop_all_requests()
+end, { desc = "99: Stop all requests" })
+
+-- Clear previous requests
+map("n", "<leader>9c", function()
+  _99.clear_previous_requests()
+end, { desc = "99: Clear previous requests" })
+
+-- View AI logs
+map("n", "<leader>9l", function()
+  _99.view_logs()
+end, { desc = "99: View logs" })
+
+-- Open last interaction
+map("n", "<leader>9o", function()
+  _99.open()
+end, { desc = "99: Open last interaction" })
+
+-- Set work for Worker extension
+map("n", "<leader>9w", function()
+  _99.Extensions.Worker.set_work()
+end, { desc = "99: Set work item" })
+
+-- Search for remaining work
+map("n", "<leader>9W", function()
+  _99.Extensions.Worker.search()
+end, { desc = "99: Search remaining work" })
+
+-- Model/Provider selection (if using telescope)
+-- Uncomment if you have telescope installed:
+-- map("n", "<leader>9m", function()
+--   require("99.extensions.telescope").select_model()
+-- end, { desc = "99: Select model" })
+-- 
+-- map("n", "<leader>9p", function()
+--   require("99.extensions.telescope").select_provider()
+-- end, { desc = "99: Select provider" })
+
+-- Grug-far search and replace
+map("n", "<leader>sr", function()
+  local ext = vim.fn.expand("%:e")
+  require("grug-far").open({
+    transient = true,
+    prefills = {
+      filesFilter = ext ~= "" and "*." .. ext or nil,
+    },
+  })
+end, { desc = "Search and replace" })
+
+map("v", "<leader>sr", function()
+  require("grug-far").open({
+    transient = true,
+    prefills = {
+      search = vim.fn.getreg('"'),
+    },
+  })
+end, { desc = "Search and replace (visual)" })

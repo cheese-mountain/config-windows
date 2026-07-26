@@ -7,6 +7,7 @@ return {
   { import = "plugins.none-ls" },
   { import = "plugins.prettier" },
   { import = "plugins.lspconfig" },
+  { import = "plugins.typescript-tools" },
   { import = "plugins.nvimtree" },
   { import = "plugins.comment" },
   { import = "plugins.harpoon" },
@@ -16,6 +17,9 @@ return {
   { import = "plugins.treesj" },
   { import = "plugins.oil" },
   { import = "plugins.ts-error-translator" },
+  { import = "plugins.grug-far" },
+  { import = "plugins.trouble" },
+  { import = "plugins.99" },
   { "folke/which-key.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 }
