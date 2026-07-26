@@ -10,7 +10,7 @@ Make sure all applications run as admin to not run into any issues
 
 ## Getting started
 
-1. Install github cli & run gh auth login
+1. Install github cli & run gh auth login ```winget install --id Git.Git -e --source winget; winget install --id GitHub.cli -e --source winget```
 2. Clone the repo: ```gh repo clone cheese-mountain/config```
 3. Run ```powershell.exe -ExecutionPolicy Bypass -File ./setup.ps1```
 
