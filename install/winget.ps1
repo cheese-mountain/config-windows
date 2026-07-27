@@ -1,6 +1,8 @@
 $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
+    "Notion.Notion",
+    "Doist.Todoist",
     "jqlang.jq",
     "LLVM.clangd",
     "Oven-sh.Bun",
