@@ -67,9 +67,6 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "editor.gotoLocation.multipleImplementations": "goto",
     "editor.gotoLocation.multipleTypeDefinitions": "goto",
-
-    // Style config
-    "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "catppuccin-mocha",
     "catppuccin.accentColor": "blue",
     "catppuccin.italicComments": false,
@@ -273,5 +270,7 @@
     "npm.packageManager": "pnpm",
     "git.openRepositoryInParentFolders": "always",
     "powershell.promptToUpdatePowerShell": false,
-    "github.copilot.nextEditSuggestions.enabled": true
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "workbench.colorTheme": "Default High Contrast",
+    "chat.viewSessions.orientation": "stacked"
 }

@@ -20,9 +20,12 @@ Make sure all applications run as admin to not run into any issues
 
 ### Terminal Setup
 
-1. Copy paste windows terminal settings from windows/terminal.json
-2. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
-3. Run nvim $profile & insert ```. T:\path\to\this\repo\profile.ps1```
+Windows terminal settings, wezterm, wtq, nvim, kanata, vscode, gitconfig, tmux and herdr
+configs are symlinked from this repo by ```install/symlinks.ps1``` (run as part of setup.ps1),
+and $profile is set up to dot-source windows/profile.ps1. Existing files are moved to
+```<name>.backup-<timestamp>``` first. Needs admin or Developer Mode for symlinks.
+
+1. Run ```Set-ExecutionPolicy RemoteSigned -Scope CurrentUser```
 
 ### Keybindings
 

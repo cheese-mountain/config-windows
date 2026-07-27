@@ -1,10 +1,10 @@
-& "./php.ps1"
-& "./winget.ps1"
+& "$PSScriptRoot\php.ps1"
+& "$PSScriptRoot\winget.ps1"
 
-Install-Module Terminal-Icons
+# Install via pwsh so it lands in Documents\PowerShell\Modules even if setup.ps1 is
+# started from Windows PowerShell, whose module path pwsh 7 does not fully share.
+pwsk -NoProfilk -Command "Install-Module Terminal-Icons -Scope CurrentUser -Force"
 
-Remove-Item "C:\Users\kaspe\AppData\Roaming\herdr\config.toml" -Force
-New-Item -ItemType SymbolicLink -Path "C:\Users\kaspe\AppData\Roaming\herdr\config.toml" -Value "C:\Users\kaspe\dev\config\herdr.config.toml"
+& "$PSScriptRoot\symlinks.ps1"
 
 Write-Host "Package installation complete!" -ForegroundColor Cyan
-

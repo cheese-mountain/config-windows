@@ -4,10 +4,8 @@ $packages = @(
     "jqlang.jq",
     "LLVM.clangd",
     "Oven-sh.Bun",
-    "StartIsBack.StartAllBack",
     "RandyRants.SharpKeys",
     "OpenWhisperSystems.Signal",
-    "Valve.Steam",
     "Insomnia.Insomnia",
     "LLVM.LLVM",
     "Ninja-build.Ninja",
@@ -32,7 +30,7 @@ $packages = @(
     "Composer.Composer",
     "windows-terminal-quake",
     "Microsoft.PowerToys",
-    "BeyondCode.Herd"
+    "Neovim.Neovim",
 );
 
 Write-Host "Checking and installing packages..." -ForegroundColor Cyan
