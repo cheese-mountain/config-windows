@@ -1,7 +1,3 @@
-# pwsh 7 only - Windows PowerShell 5.1 ships PSReadLine 2.0.0 (too old for oh-my-posh's
-# init script) and uses a different module path, so bail out instead of erroring.
-if ($PSVersionTable.PSEdition -ne 'Core') { return }
-
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 

@@ -26,7 +26,13 @@ function Register-StartupTask($name, $exe, $argument) {
         Write-Host "  skip  $name ($exe not found)" -ForegroundColor DarkGray
         return
     }
-    $action = New-ScheduledTaskAction -Execute $exe -Argument $argument
+    # -Argument rejects null/empty, so only pass it when there is one.
+    $action = if ($argument) {
+        New-ScheduledTaskAction -Execute $exe -Argument $argument
+    }
+    else {
+        New-ScheduledTaskAction -Execute $exe
+    }
     try {
         Register-ScheduledTask -TaskName $name -Action $action -Trigger $trigger `
             -Principal $principal -Settings $settings -Force -ErrorAction Stop | Out-Null
@@ -39,7 +45,7 @@ function Register-StartupTask($name, $exe, $argument) {
 
 # Windows Terminal
 $wt = Join-Path $env:LOCALAPPDATA "Microsoft\WindowsApps\wt.exe"
-Register-StartupTask "config-terminal" $wt ""
+Register-StartupTask "config-terminal" $wt
 
 # AutoHotkey remaps (path resolved from this repo, not hardcoded)
 $ahkExe = "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
