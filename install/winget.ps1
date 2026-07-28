@@ -1,6 +1,7 @@
 $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
+    "Python.Python.3.11",
     "Notion.Notion",
     "Doist.Todoist",
     "jqlang.jq",
