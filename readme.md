@@ -17,7 +17,7 @@ New-Item -ItemType Directory -Path "$HOME\repos" -Force | Set-Location
 
 # Clone repo and enter folder
 gh repo clone cheese-mountain/config
-Set-Location config
+Set-Location config/install
 
 # Run setup script
 powershell.exe -ExecutionPolicy Bypass -File ./setup.ps1
