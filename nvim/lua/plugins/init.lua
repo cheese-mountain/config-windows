@@ -19,7 +19,7 @@ return {
   { import = "plugins.ts-error-translator" },
   { import = "plugins.grug-far" },
   { import = "plugins.trouble" },
-  { import = "plugins.99" },
+  { import = "plugins.avante" },
   { "folke/which-key.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 }
