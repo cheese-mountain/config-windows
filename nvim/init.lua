@@ -1,21 +1,3 @@
-local log_path = vim.fn.stdpath("state") .. "/live_messages.log"
-local original_notify = vim.notify
-
--- check C:\Users\kaspe\AppData\Local\nvim-data
-vim.notify = function(msg, level, opts)
-  -- 1. Call the original notify function so the message still appears on screen
-  original_notify(msg, level, opts)
-
-  -- 2. Append the message immediately to disk
-  local f = io.open(log_path, "a")
-  if f then
-    local timestamp = os.date("[%Y-%m-%d %H:%M:%S]")
-    -- Normalize table messages into strings if needed
-    local formatted_msg = type(msg) == "table" and table.concat(msg, "\n") or tostring(msg)
-    f:write(string.format("%s %s\n", timestamp, formatted_msg))
-    f:close()
-  end
-end
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
