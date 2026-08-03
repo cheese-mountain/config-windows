@@ -3,6 +3,7 @@ $packages = @(
     "Microsoft.VisualStudio.2022.BuildTools",
     "LLVM.clangd",
     "Python.Python.3.11",
+    "JesseDuffield.lazygit",
     "LLVM.LLVM",
     "Ninja-build.Ninja",
     "BurntSushi.ripgrep.MSVC",

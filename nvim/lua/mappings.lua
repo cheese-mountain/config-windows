@@ -91,6 +91,9 @@ local gitsigns = require('gitsigns')
 -- Preview hunk inline (VSCode-style)
 map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'Preview hunk (inline)' })
 
+-- Reset hunk inline (VSCode-style)
+map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Restore current line' })
+
 -- Toggle inline blame
 map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Toggle inline blame' })
 
