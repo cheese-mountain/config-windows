@@ -30,7 +30,8 @@ $packages = @(
     "ajeetdsouza.zoxide",
     "GnuWin32.GetText",
     "EclipseAdoptium.Temurin.21.JDK",
-    "Microsoft.PowerToys"
+    "Microsoft.PowerToys",
+    "Tailscale.Tailscale"
 );
 
 Write-Host "Checking and installing packages..." -ForegroundColor Cyan

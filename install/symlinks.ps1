@@ -4,6 +4,7 @@ $repo = Split-Path $PSScriptRoot -Parent
 $links = [ordered]@{
     "herdr.config.toml"      = "$env:APPDATA\herdr\config.toml"
     ".tmux.conf"             = "$HOME\.tmux.conf"
+    "CLAUDE.md"             = "$HOME\.claude\CLAUDE.md"
     "nvim"                   = "$env:LOCALAPPDATA\nvim"
     "windows\.gitconfig"     = "$HOME\.gitconfig"
     "windows\terminal.json"  = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"

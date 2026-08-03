@@ -5,6 +5,7 @@ pwsh -NoProfile -Command "Install-Module Terminal-Icons -Scope CurrentUser -Forc
 & "$PSScriptRoot\fonts.ps1"
 & "$PSScriptRoot\symlinks.ps1"
 & "$PSScriptRoot\startup.ps1"
+& "$PSScriptRoot\ssh.ps1"
 
 # powershell -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"
 # npm i -g hunkdiff
