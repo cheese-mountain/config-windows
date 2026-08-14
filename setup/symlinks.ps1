@@ -2,15 +2,12 @@ $repo = Split-Path $PSScriptRoot -Parent
 
 # source (relative to repo root) -> target
 $links = [ordered]@{
-    "dotfiles\herdr.toml"      = "$env:APPDATA\herdr\config.toml"
-    "dotfiles\tmux.conf"       = "$HOME\.tmux.conf"
-    "dotfiles\CLAUDE.md"       = "$HOME\.claude\CLAUDE.md"
-    "dotfiles\gitconfig"       = "$HOME\.gitconfig"
-    "dotfiles\terminal.json"   = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-    "nvim"                     = "$env:LOCALAPPDATA\nvim"
-    "vscode\settings.jsonc"    = "$env:APPDATA\Code\User\settings.json"
-    "vscode\keybindings.jsonc" = "$env:APPDATA\Code\User\keybindings.json"
-    "vscode\tasks.jsonc"       = "$env:APPDATA\Code\User\tasks.json"
+    "assets\dotfiles\herdr.toml"    = "$env:APPDATA\herdr\config.toml"
+    "assets\dotfiles\tmux.conf"     = "$HOME\.tmux.conf"
+    "assets\dotfiles\CLAUDE.md"     = "$HOME\.claude\CLAUDE.md"
+    "assets\dotfiles\gitconfig"     = "$HOME\.gitconfig"
+    "assets\dotfiles\terminal.json" = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    "nvim"                          = "$env:LOCALAPPDATA\nvim"
 }
 
 function Test-Admin {
@@ -65,8 +62,9 @@ foreach ($entry in $links.GetEnumerator()) {
 }
 
 # The PowerShell profile is dot-sourced instead of symlinked so that $PSScriptRoot
-# inside profile.ps1 still resolves to the repo (oh-my-posh.json sits next to it).
-$profileSource = Join-Path $repo "pwsh\profile.ps1"
+# inside profile.ps1 still resolves to the repo - it walks up from there to reach
+# assets\dotfiles\oh-my-posh.json.
+$profileSource = Join-Path $repo "windows\profile.ps1"
 $line = ". `"$profileSource`""
 
 # Target pwsh 7's AllHosts profile explicitly: $PROFILE resolves to whichever edition

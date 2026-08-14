@@ -2,7 +2,6 @@
 
 pwsh -NoProfile -Command "Install-Module Terminal-Icons -Scope CurrentUser -Force"
 
-& "$PSScriptRoot\fonts.ps1"
 & "$PSScriptRoot\symlinks.ps1"
 & "$PSScriptRoot\startup.ps1"
 & "$PSScriptRoot\ssh.ps1"

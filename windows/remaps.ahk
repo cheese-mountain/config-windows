@@ -31,8 +31,8 @@ SetWorkingDir(A_ScriptDir)
 
 ^;::Send "{Esc}"
 
-; Path to the DLL, relative to the script
-VDA_PATH := A_ScriptDir . "\VirtualDesktopAccessor.dll"
+; Path to the DLL, relative to the script (repo root is one level up)
+VDA_PATH := A_ScriptDir . "\..\assets\VirtualDesktopAccessor.dll"
 hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
 
 GetDesktopCountProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GetDesktopCount", "Ptr")

@@ -164,7 +164,7 @@
             "colorScheme": "Catppuccin Macchiato",
             "font": 
             {
-                "face": "DankMono Nerd Font",
+                "face": "JetBrainsMono Nerd Font, JetBrainsMono NF",
                 "size": 17
             },
             "opacity": 100,
@@ -179,7 +179,7 @@
                 "elevate": true,
                 "font": 
                 {
-                    "face": "DankMono Nerd Font"
+                    "face": "JetBrainsMono Nerd Font, JetBrainsMono NF"
                 },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,

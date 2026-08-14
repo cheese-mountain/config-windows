@@ -13,6 +13,15 @@ description = "fuzzy find"
 width = "80%"
 height = "80%"
 
+# -NoExit keeps the shell alive; without it the popup closes the moment pwsh exits.
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "pwsh -NoExit"
+description = "scratch shell"
+width = "80%"
+height = "80%"
+
 [ui]
 hide_tab_bar_when_single_tab = true
 prompt_new_tab_name = false

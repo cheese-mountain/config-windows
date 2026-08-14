@@ -49,5 +49,5 @@ Register-StartupTask "config-terminal" $wt
 
 # AutoHotkey remaps (path resolved from this repo, not hardcoded)
 $ahkExe = "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
-$ahkScript = Join-Path $repo "ahk\remaps.ahk"
+$ahkScript = Join-Path $repo "windows\remaps.ahk"
 Register-StartupTask "config-ahk-remaps" $ahkExe "`"$ahkScript`""

@@ -33,7 +33,8 @@ $packages = @(
     "GnuWin32.GetText",
     "EclipseAdoptium.Temurin.21.JDK",
     "Microsoft.PowerToys",
-    "Tailscale.Tailscale"
+    "Tailscale.Tailscale",
+    "DEVCOM.JetBrainsMonoNerdFont"
 );
 
 Write-Host "Checking and installing packages..." -ForegroundColor Cyan
