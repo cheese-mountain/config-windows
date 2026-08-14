@@ -40,15 +40,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+w"
-        },
-        {
-            "id": "Terminal.ToggleFullscreen",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+v"
+            "keys": "ctrl+f"
         },
         {
             "id": null,
@@ -56,7 +48,15 @@
         },
         {
             "id": null,
-            "keys": "ctrl+f"
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.ToggleFullscreen",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
         },
         {
             "id": "User.quakeMode.F1E129A4",
@@ -164,7 +164,7 @@
             "colorScheme": "Catppuccin Macchiato",
             "font": 
             {
-                "face": "CaskaydiaCove Nerd Font",
+                "face": "DankMono Nerd Font",
                 "size": 17
             },
             "opacity": 100,
@@ -177,6 +177,10 @@
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "elevate": true,
+                "font": 
+                {
+                    "face": "DankMono Nerd Font"
+                },
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "PowerShell"
