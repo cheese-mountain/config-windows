@@ -2,6 +2,9 @@
 
 ## Specific hard rules
 
+### Comments
+Use comments very sparingly. Only write comments when explaining something that is genuinely hard to understand without looking closely at the code (e.g., complex algorithms, non-obvious business logic, or workarounds for edge cases). Do not write comments that merely describe what clean, self-explanatory code is doing.
+
 ### PHP coding standards
 
 **Scope: PHP only.** Every rule in this section — whitespace *and* naming — applies
