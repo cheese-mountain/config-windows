@@ -17,7 +17,7 @@ New-Item -ItemType Directory -Path "$HOME\repos" -Force | Set-Location
 
 # Clone repo and enter folder
 gh repo clone kasper-ostberg/config
-Set-Location config/install
+Set-Location config/setup
 
 # Run setup script
 powershell.exe -ExecutionPolicy Bypass -File ./setup.ps1

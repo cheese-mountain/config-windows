@@ -2,15 +2,15 @@ $repo = Split-Path $PSScriptRoot -Parent
 
 # source (relative to repo root) -> target
 $links = [ordered]@{
-    "herdr.config.toml"      = "$env:APPDATA\herdr\config.toml"
-    ".tmux.conf"             = "$HOME\.tmux.conf"
-    "CLAUDE.md"             = "$HOME\.claude\CLAUDE.md"
-    "nvim"                   = "$env:LOCALAPPDATA\nvim"
-    "windows\.gitconfig"     = "$HOME\.gitconfig"
-    "windows\terminal.json"  = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-    "vscode\settings.jsonc"  = "$env:APPDATA\Code\User\settings.json"
+    "dotfiles\herdr.toml"      = "$env:APPDATA\herdr\config.toml"
+    "dotfiles\tmux.conf"       = "$HOME\.tmux.conf"
+    "dotfiles\CLAUDE.md"       = "$HOME\.claude\CLAUDE.md"
+    "dotfiles\gitconfig"       = "$HOME\.gitconfig"
+    "dotfiles\terminal.json"   = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+    "nvim"                     = "$env:LOCALAPPDATA\nvim"
+    "vscode\settings.jsonc"    = "$env:APPDATA\Code\User\settings.json"
     "vscode\keybindings.jsonc" = "$env:APPDATA\Code\User\keybindings.json"
-    "vscode\tasks.jsonc"     = "$env:APPDATA\Code\User\tasks.json"
+    "vscode\tasks.jsonc"       = "$env:APPDATA\Code\User\tasks.json"
 }
 
 function Test-Admin {
@@ -66,7 +66,7 @@ foreach ($entry in $links.GetEnumerator()) {
 
 # The PowerShell profile is dot-sourced instead of symlinked so that $PSScriptRoot
 # inside profile.ps1 still resolves to the repo (oh-my-posh.json sits next to it).
-$profileSource = Join-Path $repo "windows\profile.ps1"
+$profileSource = Join-Path $repo "pwsh\profile.ps1"
 $line = ". `"$profileSource`""
 
 # Target pwsh 7's AllHosts profile explicitly: $PROFILE resolves to whichever edition
@@ -78,10 +78,30 @@ if (-Not (Test-Path $parent)) {
     New-Item -ItemType Directory -Path $parent -Force | Out-Null
 }
 
-if ((Test-Path $profilePath) -and (Select-String -Path $profilePath -SimpleMatch $profileSource -Quiet)) {
+# Drop any dot-source line left over from a previous repo location before adding
+# the current one - otherwise moving the repo leaves a line pointing at nothing.
+# Quotes and slash direction vary because older setups wrote the line by hand.
+$stale = '^\s*\.\s+"?.*[\\/]profile\.ps1"?\s*$'
+
+$current = if (Test-Path $profilePath) { @(Get-Content $profilePath) } else { @() }
+$desired = @($current | Where-Object { $_ -notmatch $stale }) + $line
+
+if (($current -join "`n") -eq ($desired -join "`n")) {
     Write-Host "  ok    $profilePath" -ForegroundColor DarkGray
 }
 else {
-    Add-Content -Path $profilePath -Value $line
-    Write-Host "  added profile source to $profilePath" -ForegroundColor Green
+    Set-Content -Path $profilePath -Value $desired
+    Write-Host "  sourced profile in $profilePath" -ForegroundColor Green
+}
+
+# Sweep the host-specific profile too: it loads alongside the AllHosts one, so a
+# stale line there still errors on every shell start.
+$hostProfile = Join-Path $parent "Microsoft.PowerShell_profile.ps1"
+if (Test-Path $hostProfile) {
+    $hostLines = @(Get-Content $hostProfile)
+    $hostKept = @($hostLines | Where-Object { $_ -notmatch $stale })
+    if ($hostKept.Count -ne $hostLines.Count) {
+        Set-Content -Path $hostProfile -Value $hostKept
+        Write-Host "  cleaned stale source from $hostProfile" -ForegroundColor Yellow
+    }
 }

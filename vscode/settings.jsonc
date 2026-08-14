@@ -86,7 +86,7 @@
     // CSS
     "vscode_custom_css.imports": [
         // "file:///F:/personal/config/vscode/style.css", // use for local testing
-        "https://raw.githubusercontent.com/cheese-mountain/config/refs/heads/main/vscode/style.css"
+        "https://raw.githubusercontent.com/kasper-ostberg/config/refs/heads/main/vscode/style.css"
     ],
 
     // Vim config

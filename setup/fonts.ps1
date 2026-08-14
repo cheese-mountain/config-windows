@@ -1,5 +1,5 @@
 $repo = Split-Path $PSScriptRoot -Parent
-$fontDir = Join-Path $repo "fonts"
+$fontDir = Join-Path $repo "assets\fonts"
 
 # Shell "Fonts" special folder (0x14). CopyHere copies the file into
 # C:\Windows\Fonts AND writes the registry registration in one step - doing that
