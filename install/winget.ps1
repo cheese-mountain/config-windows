@@ -2,6 +2,7 @@ $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
     "LLVM.clangd",
+    "Anthropic.ClaudeCode",
     "Python.Python.3.11",
     "JesseDuffield.lazygit",
     "LLVM.LLVM",

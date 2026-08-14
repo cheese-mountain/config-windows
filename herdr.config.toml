@@ -5,6 +5,14 @@ prefix = "ctrl+a"
 switch_workspace = "prefix+1..9"
 focus_agent = "prefix+alt+1..9"
 
+[[keys.command]]
+key = "prefix+alt+f"
+type = "popup"
+command = "fzf"
+description = "fuzzy find"
+width = "80%"
+height = "80%"
+
 [ui]
 hide_tab_bar_when_single_tab = true
 prompt_new_tab_name = false
