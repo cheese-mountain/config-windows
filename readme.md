@@ -2,11 +2,11 @@
 
 ```powershell
 # Install Git and GitHub CLI
-winget install --id Git.Git -e --source winget
-winget install --id GitHub.cli -e --source winget
+winget install -e --id Google.Chrome
+winget install -e --id Git.Git
+winget install -e --id Github.cli
 
-# Refresh environment variables so 'gh' and 'git' commands are instantly recognized 
-# (Avoids needing to restart PowerShell mid-script)
+# Refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 # Authenticate with GitHub (Requires manual interactive setup in terminal)
@@ -16,7 +16,7 @@ gh auth login
 New-Item -ItemType Directory -Path "$HOME\repos" -Force | Set-Location
 
 # Clone repo and enter folder
-gh repo clone cheese-mountain/config
+gh repo clone kasper-ostberg/config
 Set-Location config/install
 
 # Run setup script
