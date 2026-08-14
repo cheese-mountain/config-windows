@@ -2,16 +2,7 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+a"
-switch_tab = "prefix+1..9"
-focus_agent = "prefix+alt+1..9"
-
-[[keys.command]]
-key = "prefix+alt+f"
-type = "popup"
-command = "fzf"
-description = "fuzzy find"
-width = "80%"
-height = "80%"
+switch_workspace = "prefix+1..9"
 
 # -NoExit keeps the shell alive; without it the popup closes the moment pwsh exits.
 [[keys.command]]
