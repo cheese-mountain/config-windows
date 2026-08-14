@@ -2,7 +2,7 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+a"
-switch_workspace = "prefix+1..9"
+switch_tab = "prefix+1..9"
 focus_agent = "prefix+alt+1..9"
 
 [[keys.command]]
@@ -19,6 +19,16 @@ key = "prefix+t"
 type = "popup"
 command = "pwsh -NoExit"
 description = "scratch shell"
+width = "80%"
+height = "80%"
+
+# Single-quoted TOML literal: backslashes are not escapes. No -NoExit here, so
+# the popup closes as soon as the picker is done.
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = 'pwsh -NoProfile -File C:\Users\kaspe\repos\config\windows\herdr-fd.ps1'
+description = "jump to repo"
 width = "80%"
 height = "80%"
 

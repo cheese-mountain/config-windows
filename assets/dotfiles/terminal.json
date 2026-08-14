@@ -1,24 +1,24 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "$schema": "https://aka.ms/terminal-profiles-schema-preview",
+    "actions":
     [
         {
-            "command": 
-            {
-                "action": "quakeMode"
-            },
-            "id": "User.quakeMode.F1E129A4"
-        },
-        {
-            "command": 
+            "command":
             {
                 "action": "newTab"
             },
             "id": "User.newTab.5DEADB41"
         },
         {
-            "command": 
+            "command":
+            {
+                "action": "quakeMode"
+            },
+            "id": "User.quakeMode.F1E129A4"
+        },
+        {
+            "command":
             {
                 "action": "closeTab"
             },
@@ -32,7 +32,7 @@
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "initialPosition": ",",
-    "keybindings": 
+    "keybindings":
     [
         {
             "id": null,
@@ -40,11 +40,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+f"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+h"
+            "keys": "ctrl+shift+w"
         },
         {
             "id": null,
@@ -56,7 +52,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+w"
+            "keys": "ctrl+h"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+f"
         },
         {
             "id": "User.quakeMode.F1E129A4",
@@ -71,32 +71,32 @@
             "keys": "ctrl+shift+t"
         },
         {
-            "id": "Terminal.SwitchToTab0",
+            "id": null,
             "keys": "ctrl+1"
         },
         {
-            "id": "Terminal.SwitchToTab1",
+            "id": null,
             "keys": "ctrl+2"
         },
         {
-            "id": "Terminal.SwitchToTab2",
+            "id": null,
             "keys": "ctrl+3"
         },
         {
-            "id": "Terminal.SwitchToTab3",
+            "id": null,
             "keys": "ctrl+4"
         },
         {
-            "id": "Terminal.SwitchToTab4",
+            "id": null,
             "keys": "ctrl+5"
         },
         {
             "id": null,
-            "keys": "ctrl+6"
+            "keys": "ctrl+alt+1"
         },
         {
             "id": null,
-            "keys": "ctrl+alt+1"
+            "keys": "ctrl+6"
         },
         {
             "id": null,
@@ -151,18 +151,34 @@
             "keys": "alt+shift+minus"
         }
     ],
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
+        },
+        {
+            "allowEmpty": false,
+            "entries":
+            [
+                {
+                    "commandline": null,
+                    "name": null,
+                    "source": "Windows.Terminal.SSH",
+                    "type": "matchProfiles"
+                }
+            ],
+            "icon": "\ue969",
+            "inline": "auto",
+            "name": "SSH",
+            "type": "folder"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "colorScheme": "Catppuccin Macchiato",
-            "font": 
+            "font":
             {
                 "face": "JetBrainsMono Nerd Font, JetBrainsMono NF",
                 "size": 17
@@ -172,12 +188,12 @@
             "scrollbarState": "hidden",
             "useAcrylic": false
         },
-        "list": 
+        "list":
         [
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "elevate": true,
-                "font": 
+                "font":
                 {
                     "face": "JetBrainsMono Nerd Font, JetBrainsMono NF"
                 },
@@ -216,10 +232,46 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 18",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{3962c8f0-b87c-5b99-aef9-c8b5ec165ad2}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{02266e10-1d21-5ffc-a726-8a56ea8e5590}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{e5311a1d-7d37-53d1-9cf9-8bea6002b80e}",
+                "hidden": false,
+                "name": "SSH - frialigan",
+                "source": "Windows.Terminal.SSH"
+            },
+            {
+                "guid": "{ece45412-35bc-5474-bea4-f72a573a6623}",
+                "hidden": false,
+                "name": "SSH - ahouse",
+                "source": "Windows.Terminal.SSH"
+            },
+            {
+                "guid": "{c3ee71e6-26ef-551b-afff-0e7cd69974bd}",
+                "hidden": false,
+                "name": "SSH - spektra",
+                "source": "Windows.Terminal.SSH"
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#24273A",
@@ -269,23 +321,23 @@
         }
     ],
     "tabWidthMode": "equal",
-    "themes": 
+    "themes":
     [
         {
             "name": "Catppuccin Macchiato",
-            "tab": 
+            "tab":
             {
                 "background": "#24273AFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow": 
+            "tabRow":
             {
                 "background": "#1E2030FF",
                 "unfocusedBackground": "#181926FF"
             },
-            "window": 
+            "window":
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,

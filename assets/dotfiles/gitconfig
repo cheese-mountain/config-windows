@@ -6,6 +6,7 @@
 	name = kasper
 [core]
 	autocrlf = true
+	excludesFile = C:\\Users\\kaspe\\repos\\assets\\dotfiles\\gitignore
 [credential]
 	credentialStore = gcm
 [credential "https://github.com"]

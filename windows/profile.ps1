@@ -15,20 +15,11 @@ oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 
 Import-Module -Name Terminal-Icons -ErrorAction SilentlyContinue
 
-function fd {
-    $basePath = "$HOME\repos"
-    $selectedDir = Get-ChildItem -Path $basePath -Directory |
-        ForEach-Object { $_.FullName } |
-        fzf `
-            --preview 'lsd --color=always --icon=always {}' `
-            --preview-window=right:50% `
-            --height=80% `
-            --border |
-        Out-String
+. "$PSScriptRoot\fd.ps1"
 
-    if ($selectedDir) {
-        Set-Location $selectedDir
-    }
+# InvokePrompt redraws the prompt in place; without it the shell has already
+# changed directory but the visible prompt still shows the old one.
+Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock {
+    fd
+    [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
 }
-
-Set-PSReadLineKeyHandler -Key Ctrl+f -ScriptBlock { fd }
