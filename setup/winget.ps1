@@ -1,6 +1,7 @@
 $packages = @(
     "Kitware.CMake",
     "Microsoft.VisualStudio.2022.BuildTools",
+    "PostgreSQL.PostgreSQL.18",
     "LLVM.clangd",
     "Anthropic.ClaudeCode",
     "Python.Python.3.11",
